@@ -53,6 +53,18 @@ then
     requirements_versions_file="requirements_versions-runpod-web-4.0.0.txt"
 fi
 
+# Name of the subdirectory (defaults to requirements_versions-runpod-web-4.0.0.txt)
+if [[ -z "${training_model_url}" ]]
+then
+    training_model_url="https://huggingface.co/balapapapa/chilloutmix/resolve/main/chilloutmix_NiPrunedFp32Fix.safetensors"
+fi
+
+# Name of the subdirectory (defaults to requirements_versions-runpod-web-4.0.0.txt)
+if [[ -z "${training_models_file}" ]]
+then
+    training_models_file="chilloutmix_NiPrunedFp32Fix.safetensors"
+fi
+
 # git executable
 if [[ -z "${GIT}" ]]
 then
@@ -118,3 +130,17 @@ then
     "${GIT}" clone https://github.com/KohakuBlueleaf/a1111-sd-webui-locon.git "${sd_extended_lora_dir}"
     cd "${sd_extended_lora_dir}"/ || { printf "\e[1m\e[31mERROR: Can't cd to %s/%s/%s/%s, aborting...\e[0m" "${install_dir}" "${sd_webui_dir}" "${sd_extensions_dir}" "${sd_extended_lora_dir}"; exit 1; }
 fi
+
+cd "${install_dir}/${sd_webui_dir}/$(sd_models_dir)"/ || { printf "\e[1m\e[31mERROR: Can't cd to %s/, aborting...\e[0m" "${sd_models_dir}"; exit 1; }
+
+if [[ ! -d "${training_models_file}" ]]
+then
+    printf "\n%s\n" "${delimiter}"
+    printf "\e[1m\e[32mDownloading Training Models\n"
+    printf "\n%s\n" "${delimiter}"
+    wget "-o" "$(training_models_file)" "$(training_model_url)"
+fi
+
+printf "\n%s\n" "${delimiter}"
+printf "\e[1m\e[32mInstallation completed..please restart runpod\n"
+printf "\n%s\n" "${delimiter}"
