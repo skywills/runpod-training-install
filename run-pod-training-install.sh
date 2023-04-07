@@ -151,7 +151,7 @@ then
     printf "\n%s\n" "${delimiter}"
     printf "\e[1m\e[32mDownloading Training Models\n"
     printf "\n%s\n" "${delimiter}"
-    wget "-o" "${training_models_file}" "${training_model_url}"
+    wget "-O" "${training_models_file}" "${training_model_url}"
 fi
 
 printf "\n%s\n" "${delimiter}"
