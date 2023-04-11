@@ -37,6 +37,12 @@ then
     sd_models_dir="Stable-diffusion"
 fi
 
+# Name of the subdirectory (defaults to models/Stable-diffusion)
+if [[ -z "${sd_vae_dir}" ]]
+then
+    sd_vae_dir="VAE"
+fi
+
 # Name of the subdirectory (defaults to extensions)
 if [[ -z "${sd_extensions_dir}" ]]
 then
@@ -77,6 +83,18 @@ fi
 if [[ -z "${training_models_file}" ]]
 then
     training_models_file="chilloutmix_NiPrunedFp32Fix.safetensors"
+fi
+
+# Name of the subdirectory (defaults to requirements_versions-runpod-web-4.0.0.txt)
+if [[ -z "${vae_model_url}" ]]
+then
+    vae_model_url="https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.ckpt"
+fi
+
+# Name of the subdirectory (defaults to requirements_versions-runpod-web-4.0.0.txt)
+if [[ -z "${vae_models_file}" ]]
+then
+    vae_models_file="vae-ft-mse-840000-ema-pruned.ckpt"
 fi
 
 # git executable
@@ -152,6 +170,15 @@ then
     printf "\e[1m\e[32mDownloading Training Models\n"
     printf "\n%s\n" "${delimiter}"
     wget "-O" "${training_models_file}" "${training_model_url}"
+fi
+
+cd "${install_dir}/${sd_webui_dir}/${models_dir}/${sd_vae_dir}"/ || { printf "\e[1m\e[31mERROR: Can't cd to %s/, aborting...\e[0m" "${sd_vae_dir}"; exit 1; }
+if [[ ! -f "${vae_models_file}" ]]
+then
+    printf "\n%s\n" "${delimiter}"
+    printf "\e[1m\e[32mDownloading VAE Models\n"
+    printf "\n%s\n" "${delimiter}"
+    wget "-O" "${vae_models_file}" "${vae_model_url}"
 fi
 
 printf "\n%s\n" "${delimiter}"
