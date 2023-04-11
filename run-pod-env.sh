@@ -25,8 +25,10 @@
 
 #requirements_versions_file='requirements_versions-runpod-web-4.0.0.txt'
 
+##https://civitai.com/api/download/models/29460
 #training_model_url='https://civitai.com/api/download/models/11745'
 
+## realisticVisionV20_v20.safetensors
 #training_models_file='chilloutmix_NiPrunedFp32Fix.safetensors'
 
 #vae_model_url='https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors'
