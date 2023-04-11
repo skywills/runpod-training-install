@@ -29,7 +29,7 @@
 
 #training_models_file='chilloutmix_NiPrunedFp32Fix.safetensors'
 
-#vae_model_url='https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.ckpt'
+#vae_model_url='https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors'
 
 #vae_models_file='vae-ft-mse-840000-ema-pruned.ckpt'
 
