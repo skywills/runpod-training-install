@@ -23,7 +23,7 @@
 
 #sd_extended_lora_dir="a1111-sd-webui-locon"
 
-#requirements_versions_file='requirements_versions-runpod-web-4.0.0.txt'
+#requirements_versions_file='requirements_versions-runpod-web-6.0.0.txt'
 
 ##https://civitai.com/api/download/models/29460
 #training_model_url='https://civitai.com/api/download/models/11745'

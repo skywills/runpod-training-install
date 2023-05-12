@@ -70,7 +70,7 @@ fi
 # Name of the subdirectory (defaults to requirements_versions-runpod-web-4.0.0.txt)
 if [[ -z "${requirements_versions_file}" ]]
 then
-    requirements_versions_file="requirements_versions-runpod-web-4.0.0.txt"
+    requirements_versions_file="requirements_versions-runpod-web-6.0.0.txt"
 fi
 
 # Name of the subdirectory (defaults to requirements_versions-runpod-web-4.0.0.txt)
@@ -130,15 +130,15 @@ then
     "${GIT}" clone https://github.com/d8ahazard/sd_dreambooth_extension "${sd_dreambooth_extensions_dir}"
     cd "${sd_dreambooth_extensions_dir}"/ || { printf "\e[1m\e[31mERROR: Can't cd to %s/%s/%s/%s, aborting...\e[0m" "${install_dir}" "${sd_webui_dir}" "${sd_extensions_dir}" "${sd_dreambooth_extensions_dir}"; exit 1; }
     pip install -r requirements.txt
-    # Name of the subdirectory (defaults to sd_dreambooth_extension)
-    if [[ -z "${TORCH_COMMAND}" ]]
-    then
-        pip install torch==1.13.1 torchvision --index-url https://download.pytorch.org/whl/cu117
-    else
-        exec "${TORCH_COMMAND}"
-    fi  
-    pip uninstall -y xformers
-    pip install https://huggingface.co/MonsterMMORPG/SECourses/resolve/main/xformers-0.0.18.dev489-cp310-cp310-manylinux2014_x86_64.whl
+    # # Name of the subdirectory (defaults to sd_dreambooth_extension)
+    # if [[ -z "${TORCH_COMMAND}" ]]
+    # then
+    #     pip install torch==1.13.1 torchvision --index-url https://download.pytorch.org/whl/cu117
+    # else
+    #     exec "${TORCH_COMMAND}"
+    # fi  
+    # pip uninstall -y xformers
+    # pip install https://huggingface.co/MonsterMMORPG/SECourses/resolve/main/xformers-0.0.18.dev489-cp310-cp310-manylinux2014_x86_64.whl
 fi
 
 cd "${install_dir}/${sd_webui_dir}/${sd_extensions_dir}"/ || { printf "\e[1m\e[31mERROR: Can't cd to %s/, aborting...\e[0m" "${sd_extensions_dir}"; exit 1; }
@@ -183,7 +183,7 @@ fi
 
 printf "\n%s\n" "${delimiter}"
 printf "\e[1m\e[32mreplacing requirements_versions.txt \n"
-cp "${cwd}/requirements_versions-runpod-web-4.0.0.txt" "${install_dir}/${sd_webui_dir}/requirements_versions.txt"
+cp "${cwd}/${requirements_versions_file}" "${install_dir}/${sd_webui_dir}/requirements_versions.txt"
 printf "\n%s\n" "${delimiter}"
 
 printf "\n%s\n" "${delimiter}"
