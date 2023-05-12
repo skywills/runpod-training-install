@@ -28,4 +28,3 @@ torchsde==0.2.5
 safetensors==0.3.1
 httpcore<=0.15
 fastapi==0.94.1
-google-auth-oauthlib==0.4.6
