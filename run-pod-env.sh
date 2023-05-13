@@ -33,7 +33,7 @@
 
 #vae_model_url='https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors'
 
-#vae_models_file='vae-ft-mse-840000-ema-pruned.ckpt'
+#vae_models_file='vae-ft-mse-840000-ema-pruned.safetensors'
 
 #export TORCH_COMMAND="pip3 install torch==1.13.1 torchvision --index-url https://download.pytorch.org/whl/cu117"
 

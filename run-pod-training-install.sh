@@ -88,13 +88,13 @@ fi
 # Name of the subdirectory (defaults to requirements_versions-runpod-web-4.0.0.txt)
 if [[ -z "${vae_model_url}" ]]
 then
-    vae_model_url="https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.ckpt"
+    vae_model_url="https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors"
 fi
 
 # Name of the subdirectory (defaults to requirements_versions-runpod-web-4.0.0.txt)
 if [[ -z "${vae_models_file}" ]]
 then
-    vae_models_file="vae-ft-mse-840000-ema-pruned.ckpt"
+    vae_models_file="vae-ft-mse-840000-ema-pruned.safetensors"
 fi
 
 # git executable
@@ -181,6 +181,8 @@ then
     wget "-O" "${vae_models_file}" "${vae_model_url}"
 fi
 
+pip install gdown
+apt install -y unzip
 printf "\n%s\n" "${delimiter}"
 printf "\e[1m\e[32mreplacing requirements_versions.txt \n"
 cp "${cwd}/${requirements_versions_file}" "${install_dir}/${sd_webui_dir}/requirements_versions.txt"
@@ -189,3 +191,4 @@ printf "\n%s\n" "${delimiter}"
 printf "\n%s\n" "${delimiter}"
 printf "\e[1m\e[32mInstallation completed..please restart runpod\n"
 printf "\n%s\n" "${delimiter}"
+
