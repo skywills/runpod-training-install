@@ -3,6 +3,8 @@
 # Uncomment and change the variables below to your need:#
 #########################################################
 
+#runpod_automatic_version=6.0.0
+
 # Install directory without trailing slash
 #install_dir="/workspace"
 
@@ -23,7 +25,7 @@
 
 #sd_extended_lora_dir="a1111-sd-webui-locon"
 
-#requirements_versions_file='requirements_versions-runpod-web-6.0.0.txt'
+#requirements_versions_file='requirements_versions-runpod-web-${runpod_automatic_version}.txt'
 
 ##https://civitai.com/api/download/models/29460
 #training_model_url='https://civitai.com/api/download/models/11745'
@@ -37,4 +39,5 @@
 
 #export TORCH_COMMAND="pip3 install torch==1.13.1 torchvision --index-url https://download.pytorch.org/whl/cu117"
 
+#webui_user_versions_file='webui-user-${runpod_automatic_version}.txt'
 ###########################################

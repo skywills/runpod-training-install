@@ -12,6 +12,12 @@ fi
 
 cwd=$(pwd)
 
+# Name of the subdirectory (defaults to stable-diffusion-webui)
+if [[ -z "${runpod_automatic_version}" ]]
+then
+    runpod_automatic_version="6.0.0"
+fi
+
 # Set defaults
 # Install directory without trailing slash
 if [[ -z "${install_dir}" ]]
@@ -68,9 +74,21 @@ then
 fi
 
 # Name of the subdirectory (defaults to requirements_versions-runpod-web-4.0.0.txt)
+if [[ -z "${runpod-automatic-version}" ]]
+then
+    runpod-automatic-version="6.0.0"
+fi
+
+# Name of the subdirectory (defaults to requirements_versions-runpod-web-4.0.0.txt)
 if [[ -z "${requirements_versions_file}" ]]
 then
-    requirements_versions_file="requirements_versions-runpod-web-6.0.0.txt"
+    requirements_versions_file="requirements_versions-runpod-web-${runpod_automatic_version}.txt"
+fi
+
+# Name of the subdirectory (defaults to requirements_versions-runpod-web-4.0.0.txt)
+if [[ -z "${webui_user_versions_file}" ]]
+then
+    webui_user_versions_file="webui-user-${runpod_automatic_version}.sh"
 fi
 
 # Name of the subdirectory (defaults to requirements_versions-runpod-web-4.0.0.txt)
@@ -102,7 +120,7 @@ if [[ -z "${GIT}" ]]
 then
     export GIT="git"
 fi
-
+apt install -y unzip
 # Pretty print
 delimiter="################################################################"
 
@@ -181,11 +199,15 @@ then
     wget "-O" "${vae_models_file}" "${vae_model_url}"
 fi
 
-pip install gdown
-apt install -y unzip
+
 printf "\n%s\n" "${delimiter}"
 printf "\e[1m\e[32mreplacing requirements_versions.txt \n"
 cp "${cwd}/${requirements_versions_file}" "${install_dir}/${sd_webui_dir}/requirements_versions.txt"
+printf "\n%s\n" "${delimiter}"
+
+printf "\n%s\n" "${delimiter}"
+printf "\e[1m\e[32mreplacing webui-user.sh \n"
+cp "${cwd}/${webui_user_versions_file}" "${install_dir}/${sd_webui_dir}/webui-user.sh"
 printf "\n%s\n" "${delimiter}"
 
 printf "\n%s\n" "${delimiter}"
